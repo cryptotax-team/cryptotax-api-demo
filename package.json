@@ -1,0 +1,23 @@
+{
+  "name": "cryptotax-api-demo",
+  "version": "1.0.0",
+  "description": "A NodeJS demo showing how you can use the CryptoTax API for creating tax reports.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cryptotax-team/cryptotax-api-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cryptotax-team/cryptotax-api-demo/issues"
+  },
+  "homepage": "https://github.com/cryptotax-team/cryptotax-api-demo#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "node-fetch": "^2.6.0"
+  }
+}
