@@ -75,7 +75,6 @@ const sleep = millis => new Promise(resolve => setTimeout(resolve, millis));
 
 function createCalculationRequestData() {
 	// you can get all asset information from /assets API endpoint
-	const ASSET_ID_BCH = 208;
 	const ASSET_ID_BTC = 343;
 	const ASSET_ID_ETH = 857;
 	const ASSET_ID_EUR = 870;
@@ -132,65 +131,6 @@ function createCalculationRequestData() {
 				buyAssetId: ASSET_ID_BTC,
 				adjustmentType: "otcsell"
 			},
-			{
-				transactionId: 6,
-				accountName: "account",
-				exchangeName: "exchange",
-				tradeDate: "2015-09-15T23:29:52.123Z",
-				type: "withdrawal",
-				sellAmount: 2,
-				sellAssetId: ASSET_ID_BTC
-			},
-			{
-				transactionId: 7,
-				accountName: "account",
-				exchangeName: "exchange",
-				tradeDate: "2015-09-15T23:29:52.123Z",
-				type: "deposit",
-				buyAmount: 0.01,
-				buyAssetId: ASSET_ID_BCH,
-				adjustmentType: "hardfork",
-				hardforkDate: "2015-03-01T22:00:00.000Z",
-				hardforkAssetId: ASSET_ID_BTC
-			},
-			{
-				transactionId: 8,
-				accountName: "account",
-				exchangeName: "exchange",
-				tradeDate: "2015-02-14T23:30:52.123Z",
-				type: "deposit",
-				buyAmount: 0.01,
-				buyAssetId: ASSET_ID_BTC
-			},
-			{
-				transactionId: 9,
-				accountName: "account",
-				exchangeName: "exchange",
-				tradeDate: "2015-12-14T23:30:52.123Z",
-				type: "deposit",
-				buyAmount: 0.01,
-				buyAssetId: ASSET_ID_BTC,
-				adjustmentType: "icoinflow",
-				linkedTransactionIds: [10, 11]
-			},
-			{
-				transactionId: 10,
-				accountName: "account_2",
-				exchangeName: "exchange",
-				tradeDate: "2015-11-14T22:30:52.123Z",
-				type: "withdrawal",
-				sellAmount: 0.01,
-				sellAssetId: ASSET_ID_ETH
-			},
-			{
-				transactionId: 11,
-				accountName: "account_2",
-				exchangeName: "exchange",
-				tradeDate: "2015-11-14T22:30:52.123Z",
-				type: "withdrawal",
-				sellAmount: 0.01,
-				sellAssetId: ASSET_ID_ETH
-			}
 		],
 		baseAssetId: ASSET_ID_EUR,
 		taxCountryCode: "DE",
