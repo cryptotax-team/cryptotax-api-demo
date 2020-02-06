@@ -7,7 +7,12 @@ const fetch = require("node-fetch");
 		console.log(`Report calculation task submitted with request id ${requestId}. Now polling for results...`);
 
 		const calculationResults = await pollForCalculationResult(requestId);
-		console.log(`Calculation finished successfully! \nYou can download your PDF report here:\n${calculationResults.taxReportUrl}`);
+		if (calculationResults.warnings) {
+			console.log(`Calculation finished with warnings: ${JSON.stringify(calculationResults.warnings)}`);
+		} else {
+			console.log("Calculation finished successfully!");
+		}	
+		console.log(`You can download your PDF report here:\n${calculationResults.taxReportUrl}`);
 	} catch (err) {
 		console.error(err);
 	}
@@ -39,7 +44,7 @@ async function pollForCalculationResult(requestId) {
 		const { status } = checkResultJson;
 		console.log(`Calculation status: ${status}`);
 
-		if (status === "COMPLETED") {
+		if (status === "COMPLETED" || status === "WARNING") {
 			return checkResultJson;
 		} else if (status === "ERROR") {
 			throw new Error(`Error during report calculation: ${JSON.stringify(checkResultJson)}`);
@@ -78,6 +83,8 @@ function createCalculationRequestData() {
 	const ASSET_ID_BTC = 343;
 	const ASSET_ID_ETH = 857;
 	const ASSET_ID_EUR = 870;
+	const ASSET_ID_CHF = 463;
+	const ASSET_ID_USD = 2335;
 
 	return {
 		trades: [
@@ -130,7 +137,7 @@ function createCalculationRequestData() {
 				buyAmount: 0.01,
 				buyAssetId: ASSET_ID_BTC,
 				adjustmentType: "otcsell"
-			},
+			}
 		],
 		baseAssetId: ASSET_ID_EUR,
 		taxCountryCode: "DE",
