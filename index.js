@@ -81,6 +81,7 @@ const sleep = millis => new Promise(resolve => setTimeout(resolve, millis));
 function createCalculationRequestData() {
 	// you can get all asset information from /assets API endpoint
 	const ASSET_ID_BTC = 343;
+	const ASSET_ID_BCH = 208;
 	const ASSET_ID_ETH = 857;
 	const ASSET_ID_EUR = 870;
 	const ASSET_ID_CHF = 463;
@@ -92,27 +93,33 @@ function createCalculationRequestData() {
 				transactionId: 1,
 				accountName: "account",
 				exchangeName: "exchange",
-				tradeDate: "2015-09-13T23:30:52.123Z",
+				tradeDate: "2018-09-13T23:30:52.123Z",
 				type: "deposit",
-				buyAmount: 0.01,
+				buyAmount: 20,
 				buyAssetId: ASSET_ID_BTC,
 				adjustmentType: "linkedwithdrawal",
-				linkedTransactionId: "4"
+				linkedTransactionId: "4",
+				comment: "Some comment"
 			},
 			{
 				transactionId: 2,
-				accountName: "account",
+				accountName: "account_2",
 				exchangeName: "exchange",
-				tradeDate: "2015-09-14T23:30:52.123Z",
+				tradeDate: "2018-11-12T23:29:52.123Z",
 				type: "deposit",
-				buyAmount: 0.01,
-				buyAssetId: ASSET_ID_BTC
+				buyAmount: 12,
+				buyAssetId: ASSET_ID_BCH,
+				adjustmentType: "hardfork",
+				hardforkDate: "2018-09-15T22:00:00.000Z",
+				hardforkAssetId: ASSET_ID_BTC,
+				hardforkExchangeName: "exchange",
+				hardforkAccountName: "account"
 			},
 			{
 				transactionId: 3,
 				accountName: "account",
 				exchangeName: "exchange",
-				tradeDate: "2015-09-14T23:31:52.123Z",
+				tradeDate: "2018-09-14T23:31:52.123Z",
 				type: "trade",
 				buyAmount: 10,
 				buyAssetId: ASSET_ID_ETH,
@@ -121,27 +128,59 @@ function createCalculationRequestData() {
 			},
 			{
 				transactionId: 4,
-				accountName: "account",
+				accountName: "account_2",
 				exchangeName: "exchange",
-				tradeDate: "2015-09-13T23:29:52.123Z",
+				tradeDate: "2018-09-13T23:29:52.123Z",
 				type: "withdrawal",
-				sellAmount: 0.01,
+				sellAmount: 20,
 				sellAssetId: ASSET_ID_BTC
 			},
 			{
 				transactionId: 5,
 				accountName: "account",
 				exchangeName: "exchange",
-				tradeDate: "2015-09-13T23:28:52.123Z",
+				tradeDate: "2018-09-13T23:28:52.123Z",
 				type: "deposit",
 				buyAmount: 0.01,
 				buyAssetId: ASSET_ID_BTC,
 				adjustmentType: "otcsell"
+			},
+			{
+				transactionId: 6,
+				accountName: "account",
+				exchangeName: "exchange",
+				tradeDate: "2018-12-14T23:30:52.123Z",
+				type: "deposit",
+				buyAmount: 0.01,
+				buyAssetId: ASSET_ID_BTC,
+				adjustmentType: "icoinflow",
+				linkedTransactionIds: [
+					7,
+					8
+				]
+			},
+			{
+				transactionId: 7,
+				accountName: "account_2",
+				exchangeName: "exchange",
+				tradeDate: "2018-11-14T22:30:52.123Z",
+				type: "withdrawal",
+				sellAmount: 2.5,
+				sellAssetId: ASSET_ID_BCH
+			},
+			{
+				transactionId: 8,
+				accountName: "account_2",
+				exchangeName: "exchange",
+				tradeDate: "2018-11-14T22:30:52.123Z",
+				type: "withdrawal",
+				sellAmount: 3,
+				sellAssetId: ASSET_ID_BCH
 			}
 		],
 		baseAssetId: ASSET_ID_EUR,
 		taxCountryCode: "DE",
 		format: "pdf",
-		taxYear: 2015
+		taxYear: 2018
 	};
 }
