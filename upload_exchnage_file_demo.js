@@ -8,17 +8,17 @@ const FormData = require("form-data");
   try {
     const requestId = await uploadFileToConvert(createFileUploadRequestData());
     console.log(
-      `File to process submitted with request id ${requestId}. Now polling for results...`
+        `File to process submitted with request id ${requestId}. Now polling for results...`
     );
 
     const result = await pollForFileConvertResult(requestId);
     console.log("File processing was finished successfully!");
     console.log(
-      `List of converted transactions:\n${JSON.stringify(
-        result.convertedTransactions,
-        null,
-        2
-      )}`
+        `List of converted transactions:\n${JSON.stringify(
+            result.convertedTransactions,
+            null,
+            2
+        )}`
     );
   } catch (err) {
     console.error("Error", err);
@@ -27,8 +27,8 @@ const FormData = require("form-data");
 
 async function uploadFileToConvert(fileUploadFormData) {
   let response = await postApi(
-    `${process.env.API_BASE_URL}/convertTransactions`,
-    fileUploadFormData
+      `${process.env.CSV_API_BASE_URL}/convertTransactions`,
+      fileUploadFormData
   );
   const requestConvertFileJson = await response.json();
 
@@ -49,7 +49,7 @@ async function pollForFileConvertResult(requestId) {
     await sleep(delayInMillis);
 
     const response = await getApi(
-      `${process.env.API_BASE_URL}/convertTransactions/${requestId}`
+        `${process.env.CSV_API_BASE_URL}/convertTransactions/${requestId}`
     );
     const checkResultJson = await response.json();
 
@@ -60,7 +60,7 @@ async function pollForFileConvertResult(requestId) {
       return checkResultJson;
     } else if (status === "ERROR") {
       throw new Error(
-        `Error during file processing: ${JSON.stringify(checkResultJson)}`
+          `Error during file processing: ${JSON.stringify(checkResultJson)}`
       );
     }
 
