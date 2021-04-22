@@ -23,7 +23,7 @@ Please consult the [CryptoTax API documentation](https://api-docs.cryptotax.io/)
 1. Copy the file `.env.template` and rename it to `.env`
 1. Replace `<YOUR_CRYPTOTAX_API_TOKEN>` in the `.env` file with your individual CryptoTax API token
 1. Run `npm install` command
-1. Run `npm run create_report_demo` to execute the demo application for creating tax report
+1. Run `npm run report_demo` to execute the demo application for creating tax report
 1. Wait until the script finishes. Watch the log console for status updates.
 1. The URL to download the PDF report will be printed to the console.
 
