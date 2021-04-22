@@ -4,7 +4,7 @@
   "description": "A NodeJS demo showing how you can use the CryptoTax API for creating tax reports or converting files imported from exchanges.",
   "scripts": {
     "report_demo": "node create_report_demo.js",
-    "process_file_demo": "node upload_exchnage_file_demo.js"
+    "process_file_demo": "node upload_exchange_file_demo.js"
   },
   "repository": {
     "type": "git",
